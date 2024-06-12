@@ -45,6 +45,10 @@ export default {
           name: "Home",
           routeName: "home",
         },
+        {
+          name: "Movies",
+          routeName: "movies",
+        }
       ],
     };
   },
