@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-center">La Molisana</h1>
-    <i class="fas fa-spinner fa-pulse"></i>
+    <a href="http://localhost:8000">area riservata</a>
   </div>
 </template>
 
