@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <h1 class="text-center">La Molisana</h1>
-    <a href="http://localhost:8000">area riservata</a>
-  </div>
+  <main>
+    <router-view />
+  </main>
 </template>
 
 <script>
+import axios from 'axios';
+import { store } from './store'
   export default {
     name: 'App',
+    data() {
+      return {
+        store
+      }
+    }
   }
 </script>
 
