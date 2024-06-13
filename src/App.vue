@@ -18,8 +18,24 @@ export default {
   data() {
     return {
       store,
+      movies: [],
     };
   },
+  methods: {
+    getMovies() {
+      axios.get(this.store.apiBaseUrl + "/movies").then((response) => {
+        console.log(response.data);
+        this.movies = response.data.results;
+      }).catch((error) => {
+        // console.log(error);
+        this.$router.push({ name: 'not-found' });
+      }).finally();
+    },
+  },
+
+  mounted() {
+    this.getMovies();
+  }
 };
 </script>
 
