@@ -48,6 +48,14 @@ export default {
         {
           name: "Movies",
           routeName: "movies",
+        },
+        {
+          name: "Rooms",
+          routeName: "rooms",
+        },
+        {
+          name: "Projections",
+          routeName: "projections",
         }
       ],
     };
