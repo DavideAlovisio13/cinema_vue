@@ -4,7 +4,7 @@
 
         <ul>
             <li v-for="projection in projections" :key="projection.id">
-                {{ projection.movie.title }}, data proiezione: {{ projection.date_projection }}
+                <RouterLink :to="{ name: 'movie-detail', params: { slug : projection.slug } }"> {{ projection.title }} </RouterLink>
             </li>
         </ul>
 
@@ -24,9 +24,10 @@ export default {
     },
     methods: {
         getWeeklyProjections() {
-            axios.get(this.store.apiBaseUrl + "/weekly_movies").then((response) => {
+            axios.get(this.store.apiBaseUrl + "/movies").then((response) => {
                 console.log(response.data);
                 this.projections = response.data.results;
+                this.store.movies = response.data.results;
             })
         }
     },
