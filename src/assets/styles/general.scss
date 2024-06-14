@@ -17,3 +17,9 @@ body {
 h1 {
     color: $color-gray-200;
 }
+
+main{
+    height: calc(100vh - 100px);
+    width: 100%;
+    
+}
