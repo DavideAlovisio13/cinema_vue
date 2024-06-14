@@ -3,8 +3,8 @@
         <h1>Proiezioni della settimana</h1>
 
         <ul>
-            <li v-for="projection in projections" :key="projection.id">
-                {{ projection.movie.title }}, data proiezione: {{ projection.date_projection }}
+            <li v-for="(projection) in projections" :key="projection.id">
+                data proiezione: {{ projection.date_projection }}, titolo {{  projection.movie.title }}
             </li>
         </ul>
 
@@ -26,7 +26,8 @@ export default {
         getWeeklyProjections() {
             axios.get(this.store.apiBaseUrl + "/weekly_movies").then((response) => {
                 console.log(response.data);
-                this.projections = response.data.results;
+                this.projections = response.data.data;
+                console.log(this.projections);
             })
         }
     },
