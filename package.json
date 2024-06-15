@@ -15,7 +15,8 @@
     "sass": "^1.74.1",
     "three": "^0.163.0",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "vue3-carousel": "^0.3.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
