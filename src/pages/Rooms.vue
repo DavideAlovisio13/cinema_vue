@@ -1,8 +1,11 @@
 <template>
-  <h1>Rooms</h1>
-  <ul>
-    <li v-for="room in rooms" :key="room.id">{{ room.name }}</li>
-  </ul>
+  <div class="main-container">
+    <h1>Rooms</h1>
+    <ul>
+      <li v-for="room in rooms" :key="room.id">{{ room.name }}</li>
+    </ul>
+  </div>
+
 </template>
 
 <script>

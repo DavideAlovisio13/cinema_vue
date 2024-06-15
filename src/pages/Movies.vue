@@ -1,8 +1,11 @@
 <template>
-  <h1>Movies</h1>
-  <ul>
-    <li v-for="movie in movies" :key="movie.id">{{ movie.title }}</li>
-  </ul>
+  <div class="main-container">
+    <h1>Movies</h1>
+    <ul>
+      <li v-for="movie in movies" :key="movie.id">{{ movie.title }}</li>
+    </ul>
+  </div>
+
 </template>
 
 <script>
