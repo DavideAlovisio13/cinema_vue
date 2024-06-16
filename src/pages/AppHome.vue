@@ -56,6 +56,7 @@ export default {
                 console.log(response.data);
                 this.projections = response.data.results;
                 this.store.movies = response.data.results;
+                console.log(this.store.movies);
             })
         }
     },
