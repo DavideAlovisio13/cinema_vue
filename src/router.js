@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import AppHome from "./pages/AppHome.vue";
 import Movies from "./pages/Movies.vue";
-import MovieComponent from "./pages/MovieComponent.vue";
+import MovieComponent from "./components/MovieComponent.vue";
 import Rooms from "./pages/Rooms.vue";
 import Projections from "./pages/Projections.vue";
 

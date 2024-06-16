@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <!-- <div class="main-container">
         <div class="content">
             <div class="left">
                 <h1 class="text-center">Proiezioni della settimana</h1>
@@ -45,6 +45,9 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    <div id="jumbo" class="d-flex align-items-center justify-content-center">
+        <img src="/images/drive-in.png" alt="">
     </div>
 </template>
 
@@ -96,7 +99,7 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/styles/partials/_variables.scss' as *;
 
-.main-container {
+/* .main-container {
 
     .content {
         width: 100%;
@@ -242,5 +245,14 @@ export default {
     max-height: 150px;
     overflow-y: auto;
 
-}
+} */
+
+#jumbo {
+    width: 100%;
+    height: 100%;
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+  }
 </style>

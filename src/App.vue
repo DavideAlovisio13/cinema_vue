@@ -1,6 +1,6 @@
 <template>
   <HeaderComponent />
-  <JumboComponent />
+  <!-- <JumboComponent /> -->
   <main>
     <router-view v-slot="{ Component }">
       <transition name="MoveUp">
@@ -14,14 +14,12 @@
 <script>
 import axios from "axios";
 import { store } from "./store";
-import JumboComponent from "./components/JumboComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 export default {
   name: "App",
   components: {
     HeaderComponent,
-    JumboComponent,
     FooterComponent
   },
   data() {
@@ -57,6 +55,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+main {
+    width: 100%;
+    height: calc(100vh - 90px);
+    margin-top: 90px;
+    padding: 30px 0;
+    overflow-y: scroll;
+
+    /* Per browser WebKit (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        display: none; /* Nasconde la scrollbar */
+    }
+
+    /* Per Firefox */
+    scrollbar-width: none; /* Nasconde la scrollbar */
+
+    /* Soluzione cross-browser per nascondere la scrollbar ma mantenere lo scorrimento */
+    &.hidden-scrollbar {
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            display: block;
+            height: 100%;
+            overflow-y: scroll;
+            visibility: hidden;
+        }
+
+        > * {
+            overflow-y: scroll;
+            margin-right: -17px; /* Regola questo valore se necessario */
+            padding-right: 17px; /* Regola questo valore se necessario */
+        }
+    }
+}
 // transitions css
 .moveUp-enter-active {
   animation: fadeIn 3s ease-in
