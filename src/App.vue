@@ -1,14 +1,14 @@
 <template>
   <HeaderComponent />
   <JumboComponent />
-  <main>
+  <!-- <main>
     <router-view v-slot="{ Component }">
       <transition name="MoveUp">
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </router-view>
   </main>
-  <FooterComponent />
+  <FooterComponent /> -->
 </template>
 
 <script>
