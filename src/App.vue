@@ -1,27 +1,25 @@
 <template>
   <HeaderComponent />
-  <JumboComponent />
-  <!-- <main>
+  <!-- <JumboComponent /> -->
+  <main>
     <router-view v-slot="{ Component }">
       <transition name="MoveUp">
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </router-view>
   </main>
-  <FooterComponent /> -->
+  <FooterComponent />
 </template>
 
 <script>
 import axios from "axios";
 import { store } from "./store";
-import JumboComponent from "./components/JumboComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 export default {
   name: "App",
   components: {
     HeaderComponent,
-    JumboComponent,
     FooterComponent
   },
   data() {
@@ -57,6 +55,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+main {
+    width: 100%;
+    height: calc(100vh - 90px);
+    margin-top: 90px;
+    padding: 30px 0;
+}
 // transitions css
 .moveUp-enter-active {
   animation: fadeIn 3s ease-in

@@ -11,13 +11,12 @@
             {{ item.name }}
           </router-link>
         </li>
-        <li class="nav-item d-flex align-items-center">
-          <a class="nav-link" href="http://localhost:8000">Admin Area</a>
-        </li>
       </ul>
     </div>
-    <div >
-      <a class="nav-link" href="http://localhost:8000">Admin Area</a>
+    <div class="admin-area">
+      <a class="nav-link" href="http://localhost:8000">
+        <img src="/images/engine-removebg-preview.png" alt="">
+      </a>
     </div>
   </header>
 </template>
@@ -41,9 +40,13 @@ export default {
           routeName: "rooms",
         },
         {
-          name: "Projections",
-          routeName: "projections",
+          name: "About Us",
+          routeName: "",
         },
+        {
+          name: "Contact",
+          routeName: "",
+        }
       ],
     };
   },
@@ -60,6 +63,21 @@ header {
   padding: 20px;
   height: 90px;
   width: 100%;
+
+  .admin-area {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+
+    a {
+      width: 50px;
+      aspect-ratio: 1 / 1;
+      img {
+        width: 100%;
+        filter: brightness(0.8);
+      }
+    }
+  }
 
   #header-nav {
     position: relative;
