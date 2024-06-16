@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="first">
-            <img src="https://cdn.dribbble.com/users/1413861/screenshots/4562913/animated-c.gif" alt="placeholder">
+            <img src="/images/animated-c.gif" alt="placeholder">
             <h2 class="text-center m-auto text-white" id="title">Immergiti nell'universo cinematografico di Boolean.</h2>
 
         </div>
