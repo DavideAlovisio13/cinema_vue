@@ -13,7 +13,7 @@
             <div class="right">
                 <carousel :items-to-show="1">
                     <slide v-for="slide in projections" :key="slide" class="mt-5">
-                        <img :src="slide.thumb" :alt="slide.name" style="width: 300px" class="shadow-sm">
+                        <RouterLink :to="{ name: 'movie-detail', params: { slug : slide.slug } }"><img :src="slide.thumb" :alt="slide.name" style="width: 300px" class="shadow-sm"></RouterLink>
                     </slide>
                     <template #addons>
                         <navigation />
