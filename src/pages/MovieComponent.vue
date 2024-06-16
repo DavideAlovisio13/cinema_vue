@@ -33,6 +33,13 @@
             <div class="col-12">
                 <h3>Recensioni</h3>
 
+                <div class="card" v-for="review in movie.reviews" :key="review.id">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ review.author }}</h5>
+                        <p class="card-text">{{ review.comment }}</p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
