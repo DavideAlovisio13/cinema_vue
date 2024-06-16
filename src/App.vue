@@ -21,7 +21,7 @@ export default {
   name: "App",
   components: {
     HeaderComponent,
-    JumboComponent
+    JumboComponent,
     FooterComponent
   },
   data() {
