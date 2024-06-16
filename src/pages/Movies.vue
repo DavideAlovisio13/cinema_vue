@@ -4,7 +4,7 @@
       <img class="icon" src="/images/movie.png" alt="Movie section" />
       <img class="text" src="/images/movie-title.png" alt="Movie title" />
     </div>
-    <div class="row">
+    <div class="row g-3">
       <div class="col-3" v-for="movie in movies" :key="movie.slug">
         <MovieComponent :movie="movie" />
       </div>

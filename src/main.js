@@ -1,5 +1,7 @@
 import './assets/styles/general.scss'
 
+import 'bootstrap';
+
 import { createApp } from 'vue'
 import { router } from './router'
 
