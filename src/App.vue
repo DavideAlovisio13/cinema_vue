@@ -92,34 +92,30 @@ main {
 }
 // transitions css
 .moveUp-enter-active {
-  animation: fadeIn 3s ease-in
+  animation: fadeIn 5s ease-in-out;
 }
 
 @keyframes fadeIn {
-  0% {
+  from {
     opacity: 0;
   }
 
-  50% {
-    opacity: 50;
-  }
-
-  100% {
-    opacity: 100;
+  to {
+    opacity: 1;
   }
 }
 
 .moveUp-leave-active {
-  animation: moveUp 3s ease-in;
+  animation: moveUp 5s ease-in-out;
 }
 
 @keyframes moveUp {
-  0% {
+  from {
     transform: translateY(0);
   }
 
-  100% {
-    transform: translateY(-400px);
+  to {
+    transform: translateY(-100%);
   }
 }
 </style>
