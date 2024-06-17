@@ -1,10 +1,6 @@
 <template>
     <div>
         <div class="container">
-            <div class="title d-flex align-items-center">
-                <img class="icon" src="/images/movie.png" alt="Movie section" />
-                <img class="text" src="/images/movie-title.png" alt="Movie title" />
-            </div>
             <div class="d-flex align-items-center justify-content-center">
                 <img src="/images/Ilnostroteam.png" alt="team">
             </div>
