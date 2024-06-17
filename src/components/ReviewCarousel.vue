@@ -11,7 +11,7 @@
       class="review-card text-center"
       :class="{ 'm-a': reviews.length === 1 }"
     >
-      <div class="title d-flex align-items-center">
+      <div class="title d-flex align-items-center justify-content-center">
         <img class="icon" src="/images/review-icon.png" alt="Review section" />
         <img class="text" src="/images/reviews-title.png" alt="Movie title" />
       </div>
@@ -97,6 +97,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "../assets/styles/partials/_variables.scss" as *;
 .carousel-container {
   width: 350px;
   height: 250px;
@@ -118,11 +119,20 @@ export default {
       margin: 0 auto;
     }
   }
+  button {
+    transition: color 0.3s, transform 0.3s;
+    &:hover {
+      color: $color-red;
+      transform: scale(1.6);
+    }
+  }
 }
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
