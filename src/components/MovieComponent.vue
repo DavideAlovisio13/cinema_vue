@@ -142,24 +142,30 @@ export default {
     }
   },
   computed: {
-    groupedProjections() {
-      return this.movie.movie_rooms.reduce((acc, projection) => {
-        const date = new Date(projection.date_projection)
-          .toISOString()
-          .split("T")[0];
-        if (!acc[date]) {
-          acc[date] = [];
-        }
-        acc[date].push(projection);
-        return acc;
-      }, {});
-    },
-    sortedProjections() {
-      return Object.entries(this.groupedProjections).sort(
-        ([dateA], [dateB]) => new Date(dateA) - new Date(dateB)
-      );
-    },
+  groupedProjections() {
+    return this.movie.movie_rooms.reduce((acc, projection) => {
+      const date = new Date(projection.date_projection)
+        .toISOString()
+        .split("T")[0];
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(projection);
+      // Ordina le proiezioni per orario
+      acc[date].sort((a, b) => {
+        const timeA = a.slot.start_time;
+        const timeB = b.slot.start_time;
+        return timeA.localeCompare(timeB);
+      });
+      return acc;
+    }, {});
   },
+  sortedProjections() {
+    return Object.entries(this.groupedProjections).sort(
+      ([dateA], [dateB]) => new Date(dateA) - new Date(dateB)
+    );
+  }
+},
   mounted() {},
 };
 </script>
@@ -195,6 +201,7 @@ button {
     width: auto;
     max-width: 800px;
     .modal-content {
+      height: 800px;
       border: none;
       overflow: hidden;
       .modal-body {
@@ -261,7 +268,9 @@ button {
             top: calc(50% - 95px);
           }
           .projections-title {
-            margin-top: 370px;
+            position: absolute;
+            bottom: 25px;
+            right: calc(50% - 157px);
             .title {
               .icon {
                 width: 10ch;
