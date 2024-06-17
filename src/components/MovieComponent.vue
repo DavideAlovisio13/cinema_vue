@@ -33,14 +33,7 @@
               <p><small>Release: {{ movie.release_date }} | Language: {{ movie.language }} | Minutes: {{ movie.minutes }}</small></p>
               <p>{{ movie.description }}</p>
             </div>
-
-            <ul>
-              <li>{{ movie.title }}</li>
-              <li>{{ movie.description }}</li>
-              <li>{{ movie.language }}</li>
-              <li>{{ movie.minutes }}</li>
-              <li>{{ movie.release_date }}</li>
-            </ul>
+            <ReviewCarousel class="ms-auto" :reviews="movie.reviews" />
           </div>
         </div>
       </div>
@@ -50,8 +43,12 @@
 
 <script>
 import { store } from "@/store";
+import ReviewCarousel from "./ReviewCarousel.vue";
 export default {
   name: "MovieComponent",
+  components: {
+    ReviewCarousel,
+  },
   props: {
     movie: Object,
   },
@@ -101,11 +98,12 @@ button {
     }
   }
 }
-.modal {
-  .modal-dialog {
+.modal {  
+  .modal-dialog {    
     width: auto;
     max-width: 800px;
     .modal-content {
+      border: none;
       overflow: hidden;
       .modal-body {
         padding: 0;
