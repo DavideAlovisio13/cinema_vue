@@ -16,46 +16,46 @@
                 style=" width: 100%; height: 100%; object-fit: fill"></div>
             <div class="carousel-item active">
               <img src="/images/Kubrik.jpg" class="d-block w-100" style="width: 400px; height: 600px;" alt="Kubrik">
-              <div class="carousel-caption position-absolute"
+              <div class="carousel-caption text-start mb-3 "
                 style="">
-                <h5>{{ store.rooms[0].name }}</h5>
-                <p>{{ store.rooms[0].alias }}</p>
-                <p>{{ store.rooms[0].isense }}</p>
-                <p>{{ store.rooms[0].base_price }}€</p>
-                <p>{{ store.rooms[0].seats }} </p>
+                <h1>{{ store.rooms[0].name }}</h1>
+                <p><strong>Color : </strong>{{ store.rooms[0].alias }}</p>
+                <p><strong>Isense : </strong>{{ store.rooms[0].isense }}</p>
+                <p><strong>Basic price : </strong>{{ store.rooms[0].base_price }}€</p>
+                <p><strong>Capacity : </strong>{{ store.rooms[0].seats }} </p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/images/Hitchcock.jpg" class="d-block w-100" style="width: 400px; height: 600px;"
                 alt="Hitchcock">
-              <div class="carousel-caption position-absolute"
+              <div class="carousel-caption text-start mb-3 "
                 style="">
-                <h5>{{ store.rooms[1].name }}</h5>
-                <p>{{ store.rooms[1].alias }}</p>
-                <p>{{ store.rooms[1].isense }}</p>
-                <p>{{ store.rooms[1].base_price }}€</p>
-                <p>{{ store.rooms[1].seats }} </p>
+                <h1>{{ store.rooms[1].name }}</h1>
+                <p><strong>Color : </strong>{{ store.rooms[1].alias }}</p>
+                <p><strong>Isense : </strong>{{ store.rooms[1].isense }}</p>
+                <p><strong>Basic price : </strong>{{ store.rooms[1].base_price }}€</p>
+                <p><strong>Capacity : </strong>{{ store.rooms[1].seats }} </p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/images/Miyazaki.jpg" class="d-block w-100" style="width: 400px; height: 600px;" alt="Miyazaki">
-              <div class="carousel-caption position-absolute"
+              <div class="carousel-caption text-start mb-3 "
                 style="">
-                <h5>{{ store.rooms[2].name }}</h5>
-                <p>{{ store.rooms[2].alias }}</p>
-                <p>{{ store.rooms[2].isense }}</p>
-                <p>{{ store.rooms[2].base_price }}€</p>
-                <p>{{ store.rooms[2].seats }} </p>
+                <h1>{{ store.rooms[2].name }}</h1>
+                <p><strong>Color : </strong>{{ store.rooms[2].alias }}</p>
+                <p><strong>Isense : </strong>{{ store.rooms[2].isense }}</p>
+                <p><strong>Basic price : </strong>{{ store.rooms[2].base_price }}€</p>
+                <p><strong>Capacity : </strong>{{ store.rooms[2].seats }} </p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/images/Spilberg.jpg" class="d-block w-100" style="width: 400px; height: 600px;" alt="Spilberg">
-              <div class="carousel-caption position-absolute" style="">
-                <h5>{{ store.rooms[3].name }}</h5>
-                <p>{{ store.rooms[3].alias }}</p>
-                <p>{{ store.rooms[3].isense }}</p>
-                <p>{{ store.rooms[3].base_price }}€</p>
-                <p>{{ store.rooms[3].seats }} </p>
+              <div class="carousel-caption text-start mb-3 " style="">
+                <h1>{{ store.rooms[3].name }}</h1>
+                <p><strong>Color : </strong>{{ store.rooms[3].alias }}</p>
+                <p><strong>Isense : </strong>{{ store.rooms[3].isense }}</p>
+                <p><strong>Basic price : </strong>{{ store.rooms[3].base_price }}€</p>
+                <p><strong>Capacity : </strong>{{ store.rooms[3].seats }} </p>
               </div>
             </div>
           </div>
@@ -63,13 +63,13 @@
             <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0" class="active">
               <img src="/images/Kubrik.jpg" alt="Kubrik">
             </button>
-            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1" class="active">
+            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1">
               <img src="/images/Hitchcock.jpg" alt="Hitchcock">
             </button>
-            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2" class="active">
+            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2">
               <img src="/images/Miyazaki.jpg" alt="Miyazaki">
             </button>
-            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="3" class="active">
+            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="3">
               <img src="/images/Spilberg.jpg" alt="Spilberg">
             </button>
           </div>
@@ -108,6 +108,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+p {
+  font-size: 2rem;
+  margin: 0;
+}
 .title {
   margin-bottom: 20px;
 

@@ -3,7 +3,7 @@
   <!-- <JumboComponent /> -->
   <main>
     <router-view v-slot="{ Component }">
-      <transition name="MoveUp">
+      <transition name="slide" mode="out-in">
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </router-view>
@@ -91,31 +91,13 @@ main {
     }
 }
 // transitions css
-.moveUp-enter-active {
-  animation: fadeIn 5s ease-in-out;
+.slide-enter-active,
+.slide-leave-active {
+  transition: 0.5s;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.moveUp-leave-active {
-  animation: moveUp 5s ease-in-out;
-}
-
-@keyframes moveUp {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-100%);
-  }
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
 }
 </style>
