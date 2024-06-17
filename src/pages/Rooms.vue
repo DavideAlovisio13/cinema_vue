@@ -2,12 +2,6 @@
   <div class="main-container">
     <section class="rooms">
       <div class="container">
-        <div class="title d-flex align-items-center">
-          <div class="rounded-circle">
-            <img class="icon" src="/images/rooms.png" alt="Rooms section" />
-          </div>
-          <img class="text" src="/images/movie-title.png" alt="Movie title" />
-        </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide pt-5" data-bs-ride="carousel">
           <div class="position-absolute " style="width: 600px; right: -450px; bottom: -280px;">
             <img src="/images/auto.png" alt="auto">
@@ -22,9 +16,6 @@
               <img src="/images/Kubrik.jpg" class="d-block w-100" style="width: 400px; height: 600px;" alt="Kubrik">
               <div class="carousel-caption text-start mb-3 " style="">
                 <h1>{{ store.rooms[0].name }}</h1>
-                <p><strong>Color : </strong>{{ store.rooms[0].alias }}</p>
-                <p><strong>Isense : </strong>{{ store.rooms[0].isense }}</p>
-                <p><strong>Basic price : </strong>{{ store.rooms[0].base_price }}€</p>
                 <p><strong>Capacity : </strong>{{ store.rooms[0].seats }} </p>
               </div>
             </div>
@@ -33,9 +24,6 @@
                 alt="Hitchcock">
               <div class="carousel-caption text-start mb-3 " style="">
                 <h1>{{ store.rooms[1].name }}</h1>
-                <p><strong>Color : </strong>{{ store.rooms[1].alias }}</p>
-                <p><strong>Isense : </strong>{{ store.rooms[1].isense }}</p>
-                <p><strong>Basic price : </strong>{{ store.rooms[1].base_price }}€</p>
                 <p><strong>Capacity : </strong>{{ store.rooms[1].seats }} </p>
               </div>
             </div>
@@ -44,9 +32,6 @@
                 alt="Miyazaki">
               <div class="carousel-caption text-start mb-3 " style="">
                 <h1>{{ store.rooms[2].name }}</h1>
-                <p><strong>Color : </strong>{{ store.rooms[2].alias }}</p>
-                <p><strong>Isense : </strong>{{ store.rooms[2].isense }}</p>
-                <p><strong>Basic price : </strong>{{ store.rooms[2].base_price }}€</p>
                 <p><strong>Capacity : </strong>{{ store.rooms[2].seats }} </p>
               </div>
             </div>
@@ -54,9 +39,6 @@
               <img src="/images/Miyazaki.jpg" class="d-block w-100" style="width: 400px; height: 600px;" alt="Spilberg">
               <div class="carousel-caption text-start mb-3 " style="">
                 <h1>{{ store.rooms[3].name }}</h1>
-                <p><strong>Color : </strong>{{ store.rooms[3].alias }}</p>
-                <p><strong>Isense : </strong>{{ store.rooms[3].isense }}</p>
-                <p><strong>Basic price : </strong>{{ store.rooms[3].base_price }}€</p>
                 <p><strong>Capacity : </strong>{{ store.rooms[3].seats }} </p>
               </div>
             </div>
@@ -121,6 +103,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.rooms {
+  margin-top: 100px;
+}
 h1 {
   font-size: 4rem;
   margin-bottom: 10px;
