@@ -47,10 +47,10 @@ export default {
           name: "About Us",
           routeName: "about",
         },
-        /* {
+        {
           name: "Contact",
-          routeName: "",
-        }, */
+          routeName: "contact",
+        },
       ],
     };
   },

@@ -6,6 +6,8 @@ import MovieComponent from "./components/MovieComponent.vue";
 import Rooms from "./pages/Rooms.vue";
 import Projections from "./pages/Projections.vue";
 import About from "./pages/About.vue";
+import Contact from "./pages/Contact.vue";
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -39,6 +41,11 @@ const router = createRouter({
             path: '/about',
             name: 'about',
             component: About
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: Contact
         }
         
     ]
