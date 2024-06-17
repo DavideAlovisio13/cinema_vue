@@ -7,18 +7,30 @@
       <i class="fa-solid fa-chevron-left"></i>
     </button>
 
-    <div class="review-card text-center" :class="{ 'm-a': reviews.length === 1 }">
+    <div
+      class="review-card text-center"
+      :class="{ 'm-a': reviews.length === 1 }"
+    >
       <div class="title d-flex align-items-center">
         <img class="icon" src="/images/review-icon.png" alt="Review section" />
         <img class="text" src="/images/reviews-title.png" alt="Movie title" />
       </div>
-      <p>{{ currentReview.comment }}</p>
-      <p>
-        <span v-for="(star, index) in stars" :key="index" class="fa" :class="star"></span>
-      </p>
-      <p>
-        <strong>- {{ currentReview.author }}</strong>
-      </p>
+      <transition name="fade" mode="out-in">
+        <div :key="currentReview">
+          <p>{{ currentReview.comment }}</p>
+          <p>
+            <span
+              v-for="(star, index) in stars"
+              :key="index"
+              class="fa"
+              :class="star"
+            ></span>
+          </p>
+          <p>
+            <strong>- {{ currentReview.author }}</strong>
+          </p>
+        </div>
+      </transition>
     </div>
 
     <button class="btn" @click="nextReview" v-if="reviews.length > 1">
@@ -76,10 +88,10 @@ export default {
       const fullStars = Math.floor(this.currentReview.rating);
       const emptyStars = 5 - fullStars;
       return [
-        ...Array(fullStars).fill('fa-star'),
-        ...Array(emptyStars).fill('fa-star-o'),
+        ...Array(fullStars).fill("fa-star"),
+        ...Array(emptyStars).fill("fa-star-o"),
       ];
-    }
+    },
   },
 };
 </script>
@@ -99,12 +111,18 @@ export default {
         width: 150px;
       }
     }
-      p {
-        margin: 0;
-      }
-      &.m-a {
-        margin: 0 auto;
-      }
+    p {
+      margin: 0;
+    }
+    &.m-a {
+      margin: 0 auto;
     }
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
