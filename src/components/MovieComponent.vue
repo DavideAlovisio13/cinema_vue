@@ -33,7 +33,7 @@
               <p><small>Release: {{ movie.release_date }} | Language: {{ movie.language }} | Minutes: {{ movie.minutes }}</small></p>
               <p>{{ movie.description }}</p>
             </div>
-            <ReviewCarousel class="ms-auto" :reviews="movie.reviews" />
+            <ReviewCarousel class="review-carousel ms-auto" :reviews="movie.reviews" />
           </div>
         </div>
       </div>
@@ -162,6 +162,11 @@ button {
                 margin-top: -15px;
               }
             }
+          }
+          .review-carousel {
+            position: absolute;
+            right: 10px;
+            top: calc(50% - 95px);
           }
         }
       }
