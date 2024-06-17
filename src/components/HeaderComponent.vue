@@ -7,7 +7,11 @@
           v-for="(item, index) in menuItems"
           :key="index"
         >
-          <router-link class="nav-link" :to="{ name: item.routeName }">
+          <router-link
+            class="nav-link"
+            :to="{ name: item.routeName }"
+            active-class="active"
+          >
             {{ item.name }}
           </router-link>
         </li>
@@ -15,7 +19,7 @@
     </div>
     <div class="admin-area">
       <a class="nav-link" href="http://localhost:8000">
-        <img src="/images/engine-removebg-preview.png" alt="">
+        <img src="/images/engine-removebg-preview.png" alt="" />
       </a>
     </div>
   </header>
@@ -43,10 +47,10 @@ export default {
           name: "About Us",
           routeName: "about",
         },
-        {
+        /* {
           name: "Contact",
           routeName: "",
-        }
+        }, */
       ],
     };
   },
@@ -111,6 +115,9 @@ header {
 
       a {
         line-height: 0;
+      }
+      &.active {
+        color: $color-blue;
       }
 
       &:hover {

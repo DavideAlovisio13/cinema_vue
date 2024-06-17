@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <div class="title d-flex align-items-center">
+    <!-- <div class="title d-flex align-items-center">
       <img class="icon" src="/images/movie.png" alt="Movie section" />
       <img class="text" src="/images/movie-title.png" alt="Movie title" />
-    </div>
-    <div class="row g-3">
+    </div> -->
+    <div class="row g-3 pt-5">
       <div class="col-3" v-for="movie in movies" :key="movie.slug">
         <MovieComponent :movie="movie" />
       </div>
