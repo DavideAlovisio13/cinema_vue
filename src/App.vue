@@ -1,11 +1,10 @@
 <template>
   <HeaderComponent />
-  <!-- <JumboComponent /> -->
   <main>
     <router-view v-slot="{ Component }">
-      <!-- <transition name="slide" mode="out-in"> -->
+      <transition name="slide" mode="out-in">
         <component :is="Component" :key="$route.path"></component>
-      <!-- </transition> -->
+      </transition>
     </router-view>
   </main>
   <FooterComponent />
@@ -91,7 +90,7 @@ main {
     }
 }
 // transitions css
-/* .slide-enter-active,
+.slide-enter-active,
 .slide-leave-active {
   transition: 0.5s;
 }
@@ -99,5 +98,5 @@ main {
 .slide-leave-to {
   opacity: 0;
   transform: translateX(-30px);
-} */
+}
 </style>
