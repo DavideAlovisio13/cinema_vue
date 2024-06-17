@@ -34,7 +34,7 @@ export default {
         this.movies = response.data.results;
       }).catch((error) => {
         // console.log(error);
-        this.$router.push({ name: 'not-found' });
+        //this.$router.push({ name: 'not-found' });
       }).finally();
     },
     getRooms() {
