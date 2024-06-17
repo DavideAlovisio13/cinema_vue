@@ -27,6 +27,7 @@
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
+          <!-- movie -->
           <div class="movie-card">
             <div class="basic-info text-center px-5">
               <h2>{{ movie.title }}</h2>
@@ -43,18 +44,32 @@
               :reviews="movie.reviews"
             />
             <div class="projections-title text-center">
-              <div class="title d-flex align-items-center justify-content-center">
-                <img class="icon" src="/images/projections-icon.png" alt="Movie section" />
+              <div
+                class="title d-flex align-items-center justify-content-center"
+              >
+                <img
+                  class="icon"
+                  src="/images/projections-icon.png"
+                  alt="Movie section"
+                />
                 <img
                   class="text"
                   src="/images/projections-title.png"
                   alt="Movie title"
                 />
               </div>
-              <button>
+              <button @click="scrollToProjections">
                 <i class="fa-solid fa-angles-down"></i>
               </button>
             </div>
+          </div>
+          <!-- projections -->
+          <div ref="projectionsList" class="projections-card">
+            <ul>
+              <li v-for="projection in movie.movie_rooms" :key="projection.id">
+                {{ projection.date_projection }}
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -65,6 +80,8 @@
 <script>
 import { store } from "@/store";
 import ReviewCarousel from "./ReviewCarousel.vue";
+import { ref, computed } from "vue";
+
 export default {
   name: "MovieComponent",
   components: {
@@ -72,6 +89,20 @@ export default {
   },
   props: {
     movie: Object,
+  },
+  setup() {
+    const projectionsList = ref(null);
+
+    const scrollToProjections = () => {
+      if (projectionsList.value) {
+        projectionsList.value.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    return {
+      projectionsList,
+      scrollToProjections,
+    };
   },
   data() {
     return {
