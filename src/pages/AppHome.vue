@@ -1,51 +1,5 @@
 <template>
-    <!-- <div class="main-container">
-        <div class="content">
-            <div class="left">
-                <h1 class="text-center">Proiezioni della settimana</h1>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore vel odio asperiores! Corporis molestiae
-                accusamus explicabo quibusdam nihil velit, quia sequi ad culpa, repellat, ex omnis cumque reiciendis
-                dolores enim odio! At, laudantium ipsa omnis quae reiciendis illum quis corrupti distinctio voluptates
-                tempore ea magnam placeat dolore? Sed, exercitationem ullam ipsam voluptas temporibus fugiat magni, sunt
-                eligendi unde error sint omnis quam a adipisci aperiam architecto corporis distinctio nulla nihil!
-            </div>
-            <div class="right">
-                <carousel :items-to-show="1">
-                    <slide v-for="slide in projections" :key="slide" class="mt-5">
-                        <RouterLink :to="{ name: 'movie-detail', params: { slug: slide.slug } }"><img :src="slide.thumb"
-                                :alt="slide.name" style="width: 300px" class="shadow-sm">
-                        </RouterLink>
-                    </slide>
-                    <template #addons>
-                        <navigation />
-                        <pagination />
-                    </template>
-                </carousel>
-            </div>
-        </div>
-    </div>
-    <CardsComponent />
-    <div class="content">
-        <div class="card-body">
-            <div class="text-center">
-                <div class="body-carousel">
-                    <input type="radio" name="position" />
-                    <input type="radio" name="position" />
-                    <input type="radio" name="position" checked />
-                    <input type="radio" name="position" />
-                    <input type="radio" name="position" />
-                    <div id="carousel">
-                        <div class="item mx-4" v-for="movie in movies" :key="movie.slug">
-                            <img :src="movie.thumb" :alt="movie.name" />
-                        </div>
-                        <div class="item mx-4">
-                            <img src="https://picsum.photos/300/300" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+   
     <div id="jumbo" class="d-flex align-items-center justify-content-center">
         <img src="/images/drive-in.png" alt="">
     </div>

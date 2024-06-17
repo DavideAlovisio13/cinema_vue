@@ -2,11 +2,7 @@
   <header>
     <div class="navbar navbar-expand-lg p-0" id="header-nav">
       <ul class="navbar-nav w-100 d-flex justify-content-evenly py-1 fs-1">
-        <li
-          class="nav-item d-flex align-items-center"
-          v-for="(item, index) in menuItems"
-          :key="index"
-        >
+        <li class="nav-item d-flex align-items-center" v-for="(item, index) in menuItems" :key="index">
           <router-link class="nav-link" :to="{ name: item.routeName }">
             {{ item.name }}
           </router-link>
@@ -43,10 +39,10 @@ export default {
           name: "About Us",
           routeName: "about",
         },
-        {
-          name: "Contact",
-          routeName: "",
-        }
+        // {
+        //   name: "Contact",
+        //   routeName: "",
+        // }
       ],
     };
   },
@@ -72,6 +68,7 @@ header {
     a {
       width: 50px;
       aspect-ratio: 1 / 1;
+
       img {
         width: 100%;
         filter: brightness(0.8);
