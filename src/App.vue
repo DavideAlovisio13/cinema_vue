@@ -1,6 +1,5 @@
 <template>
   <HeaderComponent />
-  <!-- <JumboComponent /> -->
   <main>
     <router-view v-slot="{ Component }">
       <transition name="slide" mode="out-in">

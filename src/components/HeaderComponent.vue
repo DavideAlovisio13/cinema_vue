@@ -2,8 +2,16 @@
   <header>
     <div class="navbar navbar-expand-lg p-0" id="header-nav">
       <ul class="navbar-nav w-100 d-flex justify-content-evenly py-1 fs-1">
-        <li class="nav-item d-flex align-items-center" v-for="(item, index) in menuItems" :key="index">
-          <router-link class="nav-link" :to="{ name: item.routeName }">
+        <li
+          class="nav-item d-flex align-items-center"
+          v-for="(item, index) in menuItems"
+          :key="index"
+        >
+          <router-link
+            class="nav-link"
+            :to="{ name: item.routeName }"
+            active-class="active"
+          >
             {{ item.name }}
           </router-link>
         </li>
@@ -11,7 +19,7 @@
     </div>
     <div class="admin-area">
       <a class="nav-link" href="http://localhost:8000">
-        <img src="/images/engine-removebg-preview.png" alt="">
+        <img src="/images/engine-removebg-preview.png" alt="" />
       </a>
     </div>
   </header>
@@ -39,10 +47,10 @@ export default {
           name: "About Us",
           routeName: "about",
         },
-        // {
-        //   name: "Contact",
-        //   routeName: "",
-        // }
+        /* {
+          name: "Contact",
+          routeName: "",
+        }, */
       ],
     };
   },
@@ -68,10 +76,14 @@ header {
     a {
       width: 50px;
       aspect-ratio: 1 / 1;
-
+      transition: filter 0.3s, transform 0.3s;
       img {
         width: 100%;
         filter: brightness(0.8);
+      }
+      &:hover {
+        filter: brightness(0.8);
+        transform: scale(1.4);
       }
     }
   }
@@ -81,7 +93,7 @@ header {
     width: 60%;
     height: 100%;
     margin: 0 auto;
-    background-color: #2b2e3d;
+    background-color: $color-blue;
     clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
 
     ul {
@@ -103,6 +115,9 @@ header {
 
       a {
         line-height: 0;
+      }
+      &.active {
+        color: $color-blue;
       }
 
       &:hover {

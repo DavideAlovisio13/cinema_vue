@@ -3,7 +3,7 @@
     type="button"
     class="btn btn-primary"
     data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
+    :data-bs-target="`#${movie.id}Modal`"
   >
     <div class="card">
       <img :src="movie.thumb" class="card-img-top" :alt="movie.title" />
@@ -13,7 +13,7 @@
   <!-- Modal -->
   <div
     class="modal fade"
-    id="exampleModal"
+    :id="`${movie.id}Modal`"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -27,7 +27,66 @@
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae voluptates repellat voluptatum quod vel dolorem eveniet odit dicta ad aut adipisci aliquam non quisquam in ipsam deserunt a harum natus, nobis voluptatibus veritatis eos laboriosam temporibus quidem. Unde dolores aperiam ducimus, reprehenderit sapiente amet deserunt culpa ratione quidem saepe temporibus sint inventore ipsum facilis quaerat corrupti illo sit autem pariatur rerum ipsam repudiandae quasi ipsa? Sapiente ipsum dolores odio eius dolore, ratione quibusdam vitae nobis. Quo at consectetur ab officia ex adipisci fuga, quas perspiciatis beatae inventore sunt nisi reprehenderit corrupti quisquam. Corrupti, cumque veritatis laboriosam, accusantium consectetur maxime distinctio tempora voluptatem ut nemo sapiente, inventore labore libero commodi in. Quis cumque repellat iure culpa quia expedita, soluta magnam saepe, adipisci dolores numquam, iusto tempora quasi atque architecto accusamus quidem animi. Et beatae ipsa voluptatibus facere ea voluptate rem placeat minima illo neque quam assumenda eos sequi accusantium vero dolorum, voluptatum expedita, repudiandae id. Aperiam rem, soluta dolor exercitationem dolorum autem vitae veniam natus repudiandae deserunt dolorem quos est sint delectus itaque. Accusantium reiciendis aliquam hic nesciunt doloribus, omnis fuga necessitatibus dolores nisi nihil quaerat animi nostrum fugiat! Labore porro nemo cupiditate, voluptatum reiciendis praesentium vel veritatis odit, nam sunt assumenda nulla eveniet tempore saepe soluta quae distinctio est dicta id dolores consequuntur. Mollitia dicta nesciunt distinctio, explicabo odio corporis tenetur debitis voluptatem? Dignissimos eaque voluptas esse explicabo itaque perferendis quis tenetur vitae dicta ab quia expedita molestias sunt at quo magnam dolorem blanditiis, quas provident. Minus nemo ipsum facilis placeat quidem temporibus corrupti deleniti exercitationem nam ea amet nisi cum saepe minima ut, necessitatibus excepturi laudantium sunt veritatis commodi similique. Voluptas veritatis minus illo dolor aspernatur, exercitationem laborum expedita ad non magnam, nihil laboriosam, distinctio illum. Laborum ad expedita, velit maxime voluptas a voluptatibus voluptatem consequatur quos accusamus iure, qui cum earum, maiores quas? Adipisci possimus delectus quia, perspiciatis magni dignissimos? Placeat vero iusto laboriosam! Iure minima dolor iusto sunt sapiente architecto corporis quo repellendus reprehenderit nesciunt quos labore, delectus modi eveniet vitae sit consectetur cum! Iste mollitia corrupti cupiditate consequuntur, optio dolorem soluta corporis voluptate harum impedit voluptates velit inventore sed. Quod illum vel unde, explicabo at minima exercitationem nulla blanditiis doloribus alias consectetur, obcaecati nesciunt assumenda cum harum atque dicta, omnis consequatur quas repellat dignissimos magnam praesentium! Obcaecati eius officia iure quibusdam magnam esse sequi, beatae harum veritatis consequatur assumenda molestiae cupiditate velit repellat? Aspernatur similique adipisci omnis quaerat dignissimos laborum, nulla consectetur deleniti ut veritatis quos iusto sequi ipsum beatae nemo alias asperiores tenetur. Laborum adipisci, ab veritatis ipsum earum tenetur natus asperiores dolore sint sapiente perspiciatis veniam eos maiores dolores aliquid odio blanditiis nesciunt eius magnam modi, excepturi beatae perferendis consequuntur. Dolorum nobis mollitia debitis nemo quaerat labore totam placeat aliquid itaque impedit at incidunt saepe ratione, dolore tenetur possimus nesciunt assumenda soluta praesentium consequatur nulla deleniti. Nesciunt, veniam! Animi dolorem cupiditate quas iste eveniet. Iusto necessitatibus est dolores aspernatur praesentium eum mollitia voluptas ipsum enim error? Ea eveniet expedita minus, aliquam itaque fugiat dolor?
+          <!-- movie -->
+          <div class="movie-card">
+            <div class="basic-info text-center px-5">
+              <h2>{{ movie.title }}</h2>
+              <p>
+                <small
+                  >Release: {{ movie.release_date }} | Language:
+                  {{ movie.language }} | Minutes: {{ movie.minutes }}</small
+                >
+              </p>
+              <p>{{ movie.description }}</p>
+            </div>
+            <ReviewCarousel
+              class="review-carousel ms-auto"
+              :reviews="movie.reviews"
+            />
+            <div class="projections-title text-center">
+              <div
+                class="title d-flex align-items-center justify-content-center"
+              >
+                <img
+                  class="icon"
+                  src="/images/projections-icon.png"
+                  alt="Movie section"
+                />
+                <img
+                  class="text"
+                  src="/images/projections-title.png"
+                  alt="Movie title"
+                />
+              </div>
+              <button @click="scrollToProjections">
+                <i class="fa-solid fa-angles-down"></i>
+              </button>
+            </div>
+          </div>
+          <!-- projections -->
+          <div ref="projectionsList" class="projections-card">
+            <ul>
+              <li
+                class="d-flex align-items-center"
+                v-for="([date, projections], index) in sortedProjections"
+                :key="index"
+              >
+                <div class="date">
+                  <button :class="{ 'active': selectedDate === date }" @click="toggleDate(date)">
+                    {{ formatDate(date) }}
+                  </button>
+                </div>
+                <div class="date-info d-flex" :class="{ 'd-none': selectedDate !== date }">
+                  <div class="d-flex align-items-center justify-content-center" v-for="projection in projections" :key="projection.id">
+                    <span class="time">{{ formatTime(projection.slot.start_time) }}</span>
+                    <span class="room">{{ projection.room.name }}</span>
+                    <span class="isense d-flex align-items-center justify-content-center" :class="{ 'd-none': !projection.room.isense }">i</span>
+                    <span class="price">{{ projection.ticket_price }}€</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -36,18 +95,71 @@
 
 <script>
 import { store } from "@/store";
+import ReviewCarousel from "./ReviewCarousel.vue";
+import { ref, computed } from "vue";
+
 export default {
   name: "MovieComponent",
+  components: {
+    ReviewCarousel,
+  },
   props: {
     movie: Object,
+  },
+  setup() {
+    const projectionsList = ref(null);
+
+    const scrollToProjections = () => {
+      if (projectionsList.value) {
+        projectionsList.value.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    return {
+      projectionsList,
+      scrollToProjections,
+    };
   },
   data() {
     return {
       store,
+      selectedDate: null,
     };
   },
 
-  methods: {},
+  methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = { day: "2-digit", month: "short" };
+      return date.toLocaleDateString("en-US", options);
+    },
+    toggleDate(date) {
+      this.selectedDate = this.selectedDate === date ? null : date;
+    },
+    formatTime(timeString) {
+      const [hours, minutes] = timeString.split(":");
+      return `${hours}:${minutes}`;
+    }
+  },
+  computed: {
+    groupedProjections() {
+      return this.movie.movie_rooms.reduce((acc, projection) => {
+        const date = new Date(projection.date_projection)
+          .toISOString()
+          .split("T")[0];
+        if (!acc[date]) {
+          acc[date] = [];
+        }
+        acc[date].push(projection);
+        return acc;
+      }, {});
+    },
+    sortedProjections() {
+      return Object.entries(this.groupedProjections).sort(
+        ([dateA], [dateB]) => new Date(dateA) - new Date(dateB)
+      );
+    },
+  },
   mounted() {},
 };
 </script>
@@ -64,11 +176,11 @@ button {
     height: 400px;
     overflow: hidden;
     border-radius: 20px;
-    border: 4px solid #da654b;
+    border: 4px solid $color-yellow;
     cursor: pointer;
+    transition: transform 0.3s;
     &:hover {
       transform: scale(1.1);
-      transition-duration: 0.3s;
     }
     img {
       width: 100%;
@@ -78,17 +190,154 @@ button {
     }
   }
 }
-.modal-dialog {
-  max-width: 50%;
-  aspect-ratio: 1 / 1;
-  .modal-content {
-    overflow: hidden;
-    .modal-body {
-      padding: 0 40px;
-      background-image: url(/images/modal-bg.png);
-      background-color: $color-red;
-      background-repeat: no-repeat;
-      background-size: cover;
+.modal {
+  .modal-dialog {
+    width: auto;
+    max-width: 800px;
+    .modal-content {
+      border: none;
+      overflow: hidden;
+      .modal-body {
+        padding: 0;
+        position: relative;
+        background-color: $color-red;
+        /* Per browser WebKit (Chrome, Safari) */
+        &::-webkit-scrollbar {
+          display: none; /* Nasconde la scrollbar */
+        }
+
+        /* Per Firefox */
+        scrollbar-width: none; /* Nasconde la scrollbar */
+
+        /* Soluzione cross-browser per nascondere la scrollbar ma mantenere lo scorrimento */
+        &.hidden-scrollbar {
+          overflow: hidden;
+
+          &::before {
+            content: "";
+            display: block;
+            height: 100%;
+            overflow-y: scroll;
+            visibility: hidden;
+          }
+
+          > * {
+            overflow-y: scroll;
+            margin-right: -17px; /* Regola questo valore se necessario */
+            padding-right: 17px; /* Regola questo valore se necessario */
+          }
+        }
+        button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          width: 35px;
+          height: 35px;
+        }
+        .movie-card {
+          width: 800px;
+          aspect-ratio: 1 / 1;
+          background-image: url(/images/modal-bg.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          .basic-info {
+            padding-top: 150px;
+            h2 {
+              color: $color-white;
+              font-size: 3rem;
+            }
+            p {
+              color: $color-white;
+              font-style: italic;
+              &:first-of-type {
+                margin: 0;
+                margin-top: -15px;
+              }
+            }
+          }
+          .review-carousel {
+            position: absolute;
+            right: 10px;
+            top: calc(50% - 95px);
+          }
+          .projections-title {
+            margin-top: 370px;
+            .title {
+              .icon {
+                width: 10ch;
+              }
+              .text {
+                width: 250px;
+              }
+            }
+            button {
+              position: static;
+              background-color: transparent;
+              color: $color-blue;
+              font-size: 1.5rem;
+              transition: color 0.3s, transform 0.3s;
+              &:hover {
+                color: $color-white;
+                transform: scale(1.4);
+              }
+            }
+          }
+        }
+        .projections-card {
+          ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 10px;
+            li {
+              .date {
+                button {
+                  width: 80px;
+                  height: 40px;
+                  position: static;
+                  background-color: transparent;
+                  border-radius: 0;
+                  background-color: $color-blue;
+                  color: $color-white;
+                  font-size: 1.5rem;
+                  transition: color 0.3s;
+                  &:hover {
+                    color: $color-red;
+                  }
+                  &.active {
+                    color: $color-red;
+                  }
+                }
+              }
+              .date-info {
+                height: 40px;
+                width: calc(100% - 80px);                
+                div {
+                  height: 100%;
+                  width: calc(100% / 3);
+                  .time {
+                    background-color: $color-yellow;
+                    padding: 0 5px;
+                    margin-right: 5px;
+                  }
+                  .room {
+                    font-size: 1.3rem;
+                  }
+                  .isense {
+                    width: 20px;
+                    height: 20px;
+                    font-size: 1.3rem;
+                    color: $color-yellow;
+                    background-color: $color-blue;
+                    border-radius: 20px;
+                    margin: 0 5px 0 2px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
