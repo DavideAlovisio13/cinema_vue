@@ -72,9 +72,14 @@ header {
     a {
       width: 50px;
       aspect-ratio: 1 / 1;
+      transition: filter 0.3s, transform 0.3s;
       img {
         width: 100%;
         filter: brightness(0.8);
+      }
+      &:hover {
+        filter: brightness(0.8);
+        transform: scale(1.4);
       }
     }
   }
