@@ -93,7 +93,7 @@ header {
     width: 60%;
     height: 100%;
     margin: 0 auto;
-    background-color: #2b2e3d;
+    background-color: $color-blue;
     clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
 
     ul {

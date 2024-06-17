@@ -66,8 +66,24 @@
           <!-- projections -->
           <div ref="projectionsList" class="projections-card">
             <ul>
-              <li v-for="projection in movie.movie_rooms" :key="projection.id">
-                {{ projection.date_projection }}
+              <li
+                class="d-flex align-items-center"
+                v-for="([date, projections], index) in sortedProjections"
+                :key="index"
+              >
+                <div class="date">
+                  <button :class="{ 'active': selectedDate === date }" @click="toggleDate(date)">
+                    {{ formatDate(date) }}
+                  </button>
+                </div>
+                <div class="date-info d-flex" :class="{ 'd-none': selectedDate !== date }">
+                  <div class="d-flex align-items-center justify-content-center" v-for="projection in projections" :key="projection.id">
+                    <span class="time">{{ formatTime(projection.slot.start_time) }}</span>
+                    <span class="room">{{ projection.room.name }}</span>
+                    <span class="isense d-flex align-items-center justify-content-center" :class="{ 'd-none': !projection.room.isense }">i</span>
+                    <span class="price">{{ projection.ticket_price }}€</span>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -107,17 +123,41 @@ export default {
   data() {
     return {
       store,
+      selectedDate: null,
     };
   },
 
-  methods: {},
+  methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = { day: "2-digit", month: "short" };
+      return date.toLocaleDateString("en-US", options);
+    },
+    toggleDate(date) {
+      this.selectedDate = this.selectedDate === date ? null : date;
+    },
+    formatTime(timeString) {
+      const [hours, minutes] = timeString.split(":");
+      return `${hours}:${minutes}`;
+    }
+  },
   computed: {
-    trimmedText() {
-      const words = this.text.split(" ");
-      if (words.length > this.maxWords) {
-        return words.slice(0, this.maxWords).join(" ") + "...";
-      }
-      return this.text;
+    groupedProjections() {
+      return this.movie.movie_rooms.reduce((acc, projection) => {
+        const date = new Date(projection.date_projection)
+          .toISOString()
+          .split("T")[0];
+        if (!acc[date]) {
+          acc[date] = [];
+        }
+        acc[date].push(projection);
+        return acc;
+      }, {});
+    },
+    sortedProjections() {
+      return Object.entries(this.groupedProjections).sort(
+        ([dateA], [dateB]) => new Date(dateA) - new Date(dateB)
+      );
     },
   },
   mounted() {},
@@ -136,7 +176,7 @@ button {
     height: 400px;
     overflow: hidden;
     border-radius: 20px;
-    border: 4px solid #da654b;
+    border: 4px solid $color-yellow;
     cursor: pointer;
     transition: transform 0.3s;
     &:hover {
@@ -239,6 +279,60 @@ button {
               &:hover {
                 color: $color-white;
                 transform: scale(1.4);
+              }
+            }
+          }
+        }
+        .projections-card {
+          ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 10px;
+            li {
+              .date {
+                button {
+                  width: 80px;
+                  height: 40px;
+                  position: static;
+                  background-color: transparent;
+                  border-radius: 0;
+                  background-color: $color-blue;
+                  color: $color-white;
+                  font-size: 1.5rem;
+                  transition: color 0.3s;
+                  &:hover {
+                    color: $color-red;
+                  }
+                  &.active {
+                    color: $color-red;
+                  }
+                }
+              }
+              .date-info {
+                height: 40px;
+                width: calc(100% - 80px);                
+                div {
+                  height: 100%;
+                  width: calc(100% / 3);
+                  .time {
+                    background-color: $color-yellow;
+                    padding: 0 5px;
+                    margin-right: 5px;
+                  }
+                  .room {
+                    font-size: 1.3rem;
+                  }
+                  .isense {
+                    width: 20px;
+                    height: 20px;
+                    font-size: 1.3rem;
+                    color: $color-yellow;
+                    background-color: $color-blue;
+                    border-radius: 20px;
+                    margin: 0 5px 0 2px;
+                  }
+                }
               }
             }
           }
