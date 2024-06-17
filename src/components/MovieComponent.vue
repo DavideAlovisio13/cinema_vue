@@ -30,10 +30,31 @@
           <div class="movie-card">
             <div class="basic-info text-center px-5">
               <h2>{{ movie.title }}</h2>
-              <p><small>Release: {{ movie.release_date }} | Language: {{ movie.language }} | Minutes: {{ movie.minutes }}</small></p>
+              <p>
+                <small
+                  >Release: {{ movie.release_date }} | Language:
+                  {{ movie.language }} | Minutes: {{ movie.minutes }}</small
+                >
+              </p>
               <p>{{ movie.description }}</p>
             </div>
-            <ReviewCarousel class="review-carousel ms-auto" :reviews="movie.reviews" />
+            <ReviewCarousel
+              class="review-carousel ms-auto"
+              :reviews="movie.reviews"
+            />
+            <div class="projections-title text-center">
+              <div class="title d-flex align-items-center justify-content-center">
+                <img class="icon" src="/images/projections-icon.png" alt="Movie section" />
+                <img
+                  class="text"
+                  src="/images/projections-title.png"
+                  alt="Movie title"
+                />
+              </div>
+              <button>
+                <i class="fa-solid fa-angles-down"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -66,7 +87,7 @@ export default {
         return words.slice(0, this.maxWords).join(" ") + "...";
       }
       return this.text;
-    }
+    },
   },
   mounted() {},
 };
@@ -86,9 +107,9 @@ button {
     border-radius: 20px;
     border: 4px solid #da654b;
     cursor: pointer;
+    transition: transform 0.3s;
     &:hover {
       transform: scale(1.1);
-      transition-duration: 0.3s;
     }
     img {
       width: 100%;
@@ -98,8 +119,8 @@ button {
     }
   }
 }
-.modal {  
-  .modal-dialog {    
+.modal {
+  .modal-dialog {
     width: auto;
     max-width: 800px;
     .modal-content {
@@ -167,6 +188,28 @@ button {
             position: absolute;
             right: 10px;
             top: calc(50% - 95px);
+          }
+          .projections-title {
+            margin-top: 370px;
+            .title {
+              .icon {
+                width: 10ch;
+              }
+              .text {
+                width: 250px;
+              }
+            }
+            button {
+              position: static;
+              background-color: transparent;
+              color: $color-blue;
+              font-size: 1.5rem;
+              transition: color 0.3s, transform 0.3s;
+              &:hover {
+                color: $color-white;
+                transform: scale(1.4);
+              }
+            }
           }
         }
       }
