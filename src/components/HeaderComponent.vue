@@ -41,7 +41,7 @@ export default {
         },
         {
           name: "About Us",
-          routeName: "",
+          routeName: "about",
         },
         {
           name: "Contact",
