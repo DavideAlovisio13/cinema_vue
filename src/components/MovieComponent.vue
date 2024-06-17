@@ -80,7 +80,7 @@
                   <div class="d-flex align-items-center justify-content-center" v-for="projection in projections" :key="projection.id">
                     <span class="time">{{ formatTime(projection.slot.start_time) }}</span>
                     <span class="room">{{ projection.room.name }}</span>
-                    <span class="isense d-flex align-items-center justify-content-center" :class="{ 'd-none': !projection.room.isense }">i</span>
+                    <span class="isense d-flex align-items-center justify-content-center" :class="{ 'invisible': !projection.room.isense  }">i</span>
                     <span class="price">{{ projection.ticket_price }}€</span>
                   </div>
                 </div>
@@ -341,6 +341,9 @@ button {
                     border-radius: 20px;
                     margin: 0 5px 0 2px;
                   }
+                  /* .price {
+
+                  } */
                 }
               }
             }
